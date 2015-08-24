@@ -2,10 +2,15 @@
 <dialects>
     <dialect type="POSTGRES">
         <procedure name="ReadRecord">
-            <statement name="readStmt">SELECT * FROM "HTABLE" WHERE H_KEY=?</statement>
+            <statement name="readStmt">
+                SELECT * FROM "HTABLE" WHERE H_KEY=?
+            </statement>
         </procedure>
         <procedure name="ScanRecord">
-            <statement name="scanStmt">SELECT * FROM "HTABLE" WHERE H_KEY > ? AND H_KEY < ?</statement>
+            <statement name="scanStmt">
+                SELECT * FROM "HTABLE" WHERE H_KEY &gt; ? AND H_KEY &lt; ?
+            </statement>
+        </procedure>
         <procedure name="UpdateRecord">
             <statement name="updateAllStmt">
                 UPDATE "HTABLE" SET FIELD1=?,FIELD2=?,FIELD3=?,FIELD4=?,FIELD5=?,FIELD6=?,FIELD7=?,FIELD8=?,FIELD9=?,FIELD10=? WHERE H_KEY=?

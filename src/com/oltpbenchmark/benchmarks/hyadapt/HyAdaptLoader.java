@@ -27,19 +27,42 @@ import com.oltpbenchmark.catalog.Table;
 import com.oltpbenchmark.util.SQLUtil;
 import com.oltpbenchmark.util.TextGenerator;
 
+import java.util.Random;
+
 public class HyAdaptLoader extends Loader {
     private static final Logger LOG = Logger.getLogger(HyAdaptLoader.class);
     private final int num_record;
+    private static final Random rand = new Random();
 
     public HyAdaptLoader(HyAdaptBenchmark benchmark, Connection c) {
         super(benchmark, c);
         this.num_record = (int) Math.round(HyAdaptConstants.RECORD_COUNT * this.scaleFactor);
-        LOG.debug("# of RECORDS:  " + this.num_record);
-    }
+        LOG.debug("# of RECORDS:  " + this.num_record);        
+    }    
 
+    /**
+     * Returns a pseudo-random number between min and max, inclusive.
+     * The difference between min and max can be at most
+     * <code>Integer.MAX_VALUE - 1</code>.
+     *
+     * @param min Minimum value
+     * @param max Maximum value.  Must be greater than min.
+     * @return Integer between min and max, inclusive.
+     * @see java.util.Random#nextInt(int)
+     */
+    public static int getRandInt() {
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int min = -HyAdaptConstants.RANGE;
+        int max = HyAdaptConstants.RANGE;        
+
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+        return randomNum;
+    }
+    
     @Override
     public void load() throws SQLException {
-        Table catalog_tbl = this.getTableCatalog("USERTABLE");
+        Table catalog_tbl = this.getTableCatalog("HTABLE");
         assert (catalog_tbl != null);
         
         String sql = SQLUtil.getInsertSQL(catalog_tbl);
@@ -48,8 +71,8 @@ public class HyAdaptLoader extends Loader {
         int batch = 0;
         for (int i = 0; i < this.num_record; i++) {
             stmt.setInt(1, i);
-            for (int j = 2; j <= 11; j++) {
-                stmt.setString(j, TextGenerator.randomStr(rng(), 100));
+            for (int j = 2; j <= HyAdaptConstants.FIELD_COUNT + 1; j++) {
+                stmt.setInt(j, getRandInt());
             }
             stmt.addBatch();
             total++;

@@ -25,18 +25,17 @@ import org.apache.log4j.Logger;
 import com.oltpbenchmark.api.Loader;
 import com.oltpbenchmark.catalog.Table;
 import com.oltpbenchmark.util.SQLUtil;
-import com.oltpbenchmark.util.TextGenerator;
 
 import java.util.Random;
 
-public class HyAdaptLoader extends Loader {
-    private static final Logger LOG = Logger.getLogger(HyAdaptLoader.class);
+public class HYADAPTLoader extends Loader {
+    private static final Logger LOG = Logger.getLogger(HYADAPTLoader.class);
     private final int num_record;
     private static final Random rand = new Random();
 
-    public HyAdaptLoader(HyAdaptBenchmark benchmark, Connection c) {
+    public HYADAPTLoader(HYADAPTBenchmark benchmark, Connection c) {
         super(benchmark, c);
-        this.num_record = (int) Math.round(HyAdaptConstants.RECORD_COUNT * this.scaleFactor);
+        this.num_record = (int) Math.round(HYADAPTConstants.RECORD_COUNT * this.scaleFactor);
         LOG.debug("# of RECORDS:  " + this.num_record);        
     }    
 
@@ -53,8 +52,8 @@ public class HyAdaptLoader extends Loader {
     public static int getRandInt() {
         // nextInt is normally exclusive of the top value,
         // so add 1 to make it inclusive
-        int min = -HyAdaptConstants.RANGE;
-        int max = HyAdaptConstants.RANGE;        
+        int min = -HYADAPTConstants.RANGE;
+        int max = HYADAPTConstants.RANGE;        
 
         int randomNum = rand.nextInt((max - min) + 1) + min;
         return randomNum;
@@ -71,12 +70,12 @@ public class HyAdaptLoader extends Loader {
         int batch = 0;
         for (int i = 0; i < this.num_record; i++) {
             stmt.setInt(1, i);
-            for (int j = 2; j <= HyAdaptConstants.FIELD_COUNT + 1; j++) {
+            for (int j = 2; j <= HYADAPTConstants.FIELD_COUNT + 1; j++) {
                 stmt.setInt(j, getRandInt());
             }
             stmt.addBatch();
             total++;
-            if (++batch >= HyAdaptConstants.configCommitCount) {
+            if (++batch >= HYADAPTConstants.configCommitCount) {
                 int result[] = stmt.executeBatch();
                 assert (result != null);
                 conn.commit();

@@ -16,7 +16,7 @@
 
 package com.oltpbenchmark.benchmarks.hyadapt;
 
-public abstract class HyAdaptConstants {
+public abstract class HYADAPTConstants {
 
     public static final int RECORD_COUNT = 1000;
     

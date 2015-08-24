@@ -28,13 +28,13 @@ import com.oltpbenchmark.WorkloadConfiguration;
 import com.oltpbenchmark.api.BenchmarkModule;
 import com.oltpbenchmark.api.Loader;
 import com.oltpbenchmark.api.Worker;
-import com.oltpbenchmark.benchmarks.ycsb.procedures.InsertRecord;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.InsertRecord;
 import com.oltpbenchmark.catalog.Table;
 import com.oltpbenchmark.util.SQLUtil;
 
-public class HyAdaptBenchmark extends BenchmarkModule {
+public class HYADAPTBenchmark extends BenchmarkModule {
 
-    public HyAdaptBenchmark(WorkloadConfiguration workConf) {
+    public HYADAPTBenchmark(WorkloadConfiguration workConf) {
         super("hyadapt", workConf, true);
     }
 
@@ -62,7 +62,7 @@ public class HyAdaptBenchmark extends BenchmarkModule {
             for (int i = 0; i < workConf.getTerminals(); ++i) {
 //                Connection conn = this.makeConnection();
 //                conn.setAutoCommit(false);
-                workers.add(new HyAdaptWorker(i, this, init_record_count + 1));
+                workers.add(new HYADAPTWorker(i, this, init_record_count + 1));
             } // FOR
             metaConn.close();
         } catch (SQLException e) {
@@ -74,7 +74,7 @@ public class HyAdaptBenchmark extends BenchmarkModule {
 
     @Override
     protected Loader makeLoaderImpl(Connection conn) throws SQLException {
-        return new HyAdaptLoader(this, conn);
+        return new HYADAPTLoader(this, conn);
     }
 
     @Override

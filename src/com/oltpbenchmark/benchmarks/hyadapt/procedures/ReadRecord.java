@@ -27,18 +27,19 @@ import com.oltpbenchmark.api.SQLStmt;
 
 public class ReadRecord extends Procedure{
     public final SQLStmt readStmt = new SQLStmt(
-        "SELECT * FROM HTABLE WHERE H_KEY=?"
+        "SELECT FIELD1, FIELD5, FIELD8, FIELD9, FIELD10 FROM HTABLE WHERE H_KEY=?"
     );
     
 	//FIXME: The value in ysqb is a byteiterator
-    public void run(Connection conn, int keyname, Map<Integer,String> results) throws SQLException {
+    public void run(Connection conn, int keyname, Map<Integer,Integer> results) throws SQLException {
         PreparedStatement stmt = this.getPreparedStatement(conn, readStmt);
         stmt.setInt(1, keyname);          
         ResultSet r=stmt.executeQuery();
         while(r.next())
         {
-        	for(int i=1;i<11;i++)
-        		results.put(i, r.getString(i));
+            // Get the 5 attributes from the result tuple
+        	for(int i=1; i<5 ; i++)
+        	    results.put(i, r.getInt(i));
         }
         r.close();
     }

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<parameters>
+    <dbtype>postgres</dbtype>
+    <driver>org.postgresql.Driver</driver>
+    <DBUrl>jdbc:postgresql://localhost:57721/tpcc/</DBUrl>
+    <DBName>tpcc</DBName>
+    <username>parallels</username>
+    <password>parallels</password>
+
+    <!-- Scalefactor in TPCC is the number of warehouses-->
+    <scalefactor>1</scalefactor>
+   	
+    <!-- The workload -->
+    <works>
+        <work>
+          <time>10</time>
+          <rate>10</rate>
+          <weights>0,100,0,0,0,0</weights>
+        </work>
+	</works>
+	
+    <!-- TPCC Procedures declaration -->
+   	<transactiontypes>
+    	<transactiontype>
+    		<name>INVALID</name>
+    		<id>0</id>
+    	</transactiontype>
+    	<transactiontype>
+    		<name>NEW_ORDER</name>
+    		<id>1</id>
+    	</transactiontype>
+    	<transactiontype>
+    		<name>PAYMENT</name>
+    		<id>2</id>
+    	</transactiontype>
+    	<transactiontype>
+    		<name>ORDER_STATUS</name>
+    		<id>3</id>
+    	</transactiontype>
+    	<transactiontype>
+    		<name>DELIVERY</name>
+    		<id>4</id>
+    	</transactiontype>
+    	<transactiontype>
+    		<name>STOCK_LEVEL</name>
+    		<id>5</id>
+    	</transactiontype>
+   	</transactiontypes>
+      
+</parameters>

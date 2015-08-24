@@ -20,7 +20,7 @@ public abstract class HyAdaptConstants {
 
     public static final int RECORD_COUNT = 1000;
     
-    public static final int NUN_FIELDS = 10;
+    public static final int NUM_FIELDS = 10;
     
     public static final int configCommitCount = 100;
 

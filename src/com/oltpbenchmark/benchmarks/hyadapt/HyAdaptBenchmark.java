@@ -35,7 +35,7 @@ import com.oltpbenchmark.util.SQLUtil;
 public class HyAdaptBenchmark extends BenchmarkModule {
 
     public HyAdaptBenchmark(WorkloadConfiguration workConf) {
-        super("ycsb", workConf, true);
+        super("hyadapt", workConf, true);
     }
 
     @Override
@@ -47,9 +47,9 @@ public class HyAdaptBenchmark extends BenchmarkModule {
             // LOADING FROM THE DATABASE IMPORTANT INFORMATION
             // LIST OF USERS
 
-            Table t = this.catalog.getTable("USERTABLE");
+            Table t = this.catalog.getTable("HTABLE");
             assert (t != null) : "Invalid table name '" + t + "' " + this.catalog.getTables();
-            String userCount = SQLUtil.getMaxColSQL(t, "ycsb_key");
+            String userCount = SQLUtil.getMaxColSQL(t, "h_key");
             Statement stmt = metaConn.createStatement();
             ResultSet res = stmt.executeQuery(userCount);
             int init_record_count = 0;

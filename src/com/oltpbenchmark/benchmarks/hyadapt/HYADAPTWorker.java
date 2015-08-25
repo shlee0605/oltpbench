@@ -34,6 +34,26 @@ import com.oltpbenchmark.benchmarks.hyadapt.procedures.ReadRecord7;
 import com.oltpbenchmark.benchmarks.hyadapt.procedures.ReadRecord8;
 import com.oltpbenchmark.benchmarks.hyadapt.procedures.ReadRecord9;
 import com.oltpbenchmark.benchmarks.hyadapt.procedures.ReadRecord10;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.MaxRecord1;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.MaxRecord2;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.MaxRecord3;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.MaxRecord4;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.MaxRecord5;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.MaxRecord6;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.MaxRecord7;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.MaxRecord8;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.MaxRecord9;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.MaxRecord10;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.SumRecord1;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.SumRecord2;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.SumRecord3;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.SumRecord4;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.SumRecord5;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.SumRecord6;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.SumRecord7;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.SumRecord8;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.SumRecord9;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.SumRecord10;
 import com.oltpbenchmark.distributions.CounterGenerator;
 import com.oltpbenchmark.types.TransactionStatus;
 
@@ -78,11 +98,55 @@ public class HYADAPTWorker extends Worker {
             readRecord9();
         } else if (procClass.equals(ReadRecord10.class)) {
             readRecord10();
+        } else if (procClass.equals(MaxRecord1.class)) {
+            maxRecord1();
+        } else if (procClass.equals(MaxRecord2.class)) {
+            maxRecord2();
+        } else if (procClass.equals(MaxRecord3.class)) {
+            maxRecord3();
+        } else if (procClass.equals(MaxRecord4.class)) {
+            maxRecord4();
+        } else if (procClass.equals(MaxRecord5.class)) {
+            maxRecord5();
+        } else if (procClass.equals(MaxRecord6.class)) {
+            maxRecord6();
+        } else if (procClass.equals(MaxRecord7.class)) {
+            maxRecord7();
+        } else if (procClass.equals(MaxRecord8.class)) {
+            maxRecord8();
+        } else if (procClass.equals(MaxRecord9.class)) {
+            maxRecord9();
+        } else if (procClass.equals(MaxRecord10.class)) {
+            maxRecord10();
+        } else if (procClass.equals(SumRecord1.class)) {
+            sumRecord1();
+        } else if (procClass.equals(SumRecord2.class)) {
+            sumRecord2();
+        } else if (procClass.equals(SumRecord3.class)) {
+            sumRecord3();
+        } else if (procClass.equals(SumRecord4.class)) {
+            sumRecord4();
+        } else if (procClass.equals(SumRecord5.class)) {
+            sumRecord5();
+        } else if (procClass.equals(SumRecord6.class)) {
+            sumRecord6();
+        } else if (procClass.equals(SumRecord7.class)) {
+            sumRecord7();
+        } else if (procClass.equals(SumRecord8.class)) {
+            sumRecord8();
+        } else if (procClass.equals(SumRecord9.class)) {
+            sumRecord9();
+        } else if (procClass.equals(SumRecord10.class)) {
+            sumRecord10();
         }
         
         conn.commit();
         return (TransactionStatus.SUCCESS);
     }
+
+    /////////////////////////
+    // READ
+    /////////////////////////
 
     private void readRecord1() throws SQLException {
         ReadRecord1 proc = this.getProcedure(ReadRecord1.class);
@@ -142,6 +206,134 @@ public class HYADAPTWorker extends Worker {
         ReadRecord10 proc = this.getProcedure(ReadRecord10.class);
         assert (proc != null);
         proc.run(conn, key_lower_bound, new HashMap<Integer, Integer>());
+    }
+
+    /////////////////////////
+    // MAX
+    /////////////////////////
+
+    private void maxRecord1() throws SQLException {
+        MaxRecord1 proc = this.getProcedure(MaxRecord1.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void maxRecord2() throws SQLException {
+        MaxRecord2 proc = this.getProcedure(MaxRecord2.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void maxRecord3() throws SQLException {
+        MaxRecord3 proc = this.getProcedure(MaxRecord3.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void maxRecord4() throws SQLException {
+        MaxRecord4 proc = this.getProcedure(MaxRecord4.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void maxRecord5() throws SQLException {
+        MaxRecord5 proc = this.getProcedure(MaxRecord5.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void maxRecord6() throws SQLException {
+        MaxRecord6 proc = this.getProcedure(MaxRecord6.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void maxRecord7() throws SQLException {
+        MaxRecord7 proc = this.getProcedure(MaxRecord7.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void maxRecord8() throws SQLException {
+        MaxRecord8 proc = this.getProcedure(MaxRecord8.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void maxRecord9() throws SQLException {
+        MaxRecord9 proc = this.getProcedure(MaxRecord9.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void maxRecord10() throws SQLException {
+        MaxRecord10 proc = this.getProcedure(MaxRecord10.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+    
+    /////////////////////////
+    // SUM
+    /////////////////////////
+
+    private void sumRecord1() throws SQLException {
+        SumRecord1 proc = this.getProcedure(SumRecord1.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void sumRecord2() throws SQLException {
+        SumRecord2 proc = this.getProcedure(SumRecord2.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void sumRecord3() throws SQLException {
+        SumRecord3 proc = this.getProcedure(SumRecord3.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void sumRecord4() throws SQLException {
+        SumRecord4 proc = this.getProcedure(SumRecord4.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void sumRecord5() throws SQLException {
+        SumRecord5 proc = this.getProcedure(SumRecord5.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void sumRecord6() throws SQLException {
+        SumRecord6 proc = this.getProcedure(SumRecord6.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void sumRecord7() throws SQLException {
+        SumRecord7 proc = this.getProcedure(SumRecord7.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void sumRecord8() throws SQLException {
+        SumRecord8 proc = this.getProcedure(SumRecord8.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void sumRecord9() throws SQLException {
+        SumRecord9 proc = this.getProcedure(SumRecord9.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
+    }
+
+    private void sumRecord10() throws SQLException {
+        SumRecord10 proc = this.getProcedure(SumRecord10.class);
+        assert (proc != null);
+        proc.run(conn, key_lower_bound);
     }
 
 }

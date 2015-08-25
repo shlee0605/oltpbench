@@ -19,7 +19,9 @@
             <time>10</time>
             <rate>unlimited</rate>
             <weights>
-                100,0,0,0,0,0,0,0,0,0
+                0,0,0,0,0,0,0,0,0,0,
+                100,0,0,0,0,0,0,0,0,0,
+                0,0,0,0,0,0,0,0,0,0
             </weights>
         </work>
     </works>
@@ -55,6 +57,66 @@
         </transactiontype>
         <transactiontype>
             <name>ReadRecord10</name>
+        </transactiontype>
+        <transactiontype>
+            <name>MaxRecord1</name>
+        </transactiontype>
+        <transactiontype>
+            <name>MaxRecord2</name>
+        </transactiontype>
+        <transactiontype>
+            <name>MaxRecord3</name>
+        </transactiontype>
+        <transactiontype>
+            <name>MaxRecord4</name>
+        </transactiontype>
+        <transactiontype>
+            <name>MaxRecord5</name>
+        </transactiontype>
+        <transactiontype>
+            <name>MaxRecord6</name>
+        </transactiontype>
+        <transactiontype>
+            <name>MaxRecord7</name>
+        </transactiontype>
+        <transactiontype>
+            <name>MaxRecord8</name>
+        </transactiontype>
+        <transactiontype>
+            <name>MaxRecord9</name>
+        </transactiontype>
+        <transactiontype>
+            <name>MaxRecord10</name>
+        </transactiontype>
+        <transactiontype>
+            <name>SumRecord1</name>
+        </transactiontype>
+        <transactiontype>
+            <name>SumRecord2</name>
+        </transactiontype>
+        <transactiontype>
+            <name>SumRecord3</name>
+        </transactiontype>
+        <transactiontype>
+            <name>SumRecord4</name>
+        </transactiontype>
+        <transactiontype>
+            <name>SumRecord5</name>
+        </transactiontype>
+        <transactiontype>
+            <name>SumRecord6</name>
+        </transactiontype>
+        <transactiontype>
+            <name>SumRecord7</name>
+        </transactiontype>
+        <transactiontype>
+            <name>SumRecord8</name>
+        </transactiontype>
+        <transactiontype>
+            <name>SumRecord9</name>
+        </transactiontype>
+        <transactiontype>
+            <name>SumRecord10</name>
         </transactiontype>
     </transactiontypes>
 

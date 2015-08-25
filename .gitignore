@@ -26,4 +26,4 @@ target
 *.res
 *.summary
 
-outputfile*
+*outputfile*

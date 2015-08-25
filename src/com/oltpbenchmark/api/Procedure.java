@@ -181,9 +181,8 @@ public abstract class Procedure {
 	        assert(stmt != null) :
 	            String.format("Unexpected null SQLStmt handle for %s.%s",
 	                          this.procName, stmtName);
-	        if (LOG.isDebugEnabled())
-	            LOG.debug(String.format("Setting %s SQL dialect for %s.%s",
-	                                    dialects.getDatabaseType(), this.procName, stmtName));
+	        LOG.info(String.format("Setting %s SQL dialect for %s.%s :: sql : " + sql,
+	                dialects.getDatabaseType(), this.procName, stmtName));
 	        stmt.setSQL(sql);
 		} // FOR (stmt)
     }

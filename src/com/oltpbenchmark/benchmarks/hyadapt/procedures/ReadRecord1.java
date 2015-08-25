@@ -22,15 +22,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
-
 import com.oltpbenchmark.api.Procedure;
 import com.oltpbenchmark.api.SQLStmt;
 import com.oltpbenchmark.benchmarks.hyadapt.HYADAPTConstants;
 
 public class ReadRecord1 extends Procedure{
-    private static final Logger LOG = Logger.getLogger(ReadRecord1.class);
-
+    
     public final SQLStmt readStmt = new SQLStmt(
             "SELECT FIELD198, FIELD206, FIELD169, FIELD119, FIELD9, FIELD220, FIELD2, FIELD230, FIELD212, FIELD164, FIELD111, FIELD136, FIELD106, FIELD8, FIELD112, FIELD4, FIELD234, FIELD147, FIELD35, FIELD114, FIELD89, FIELD127, FIELD144, FIELD71, FIELD186 "
                     + "FROM HTABLE WHERE FIELD1>?" );
@@ -39,19 +36,13 @@ public class ReadRecord1 extends Procedure{
     public void run(Connection conn, int keyname, Map<Integer,Integer> results) throws SQLException {
         PreparedStatement stmt = this.getPreparedStatement(conn, readStmt);
         stmt.setInt(1, keyname);          
-
-        LOG.info("query : " + stmt.toString());
-
         ResultSet r=stmt.executeQuery();
-        int res_cnt = 0;
+
         while(r.next())
         {
-            res_cnt++;
         	for(int i=1; i<= ((HYADAPTConstants.FIELD_COUNT/10) * 1); i++)
-        		results.put(i, r.getInt(i));
+        	    results.put(i, r.getInt(i));
         }        
-        
-        LOG.info("result : " + res_cnt);
 
         r.close();
     }

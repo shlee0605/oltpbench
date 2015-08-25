@@ -32,8 +32,8 @@ public class ReadRecord1 extends Procedure{
     private static final Logger LOG = Logger.getLogger(ReadRecord1.class);
 
     public final SQLStmt readStmt = new SQLStmt(
-            "SELECT FIELD1, FIELD2, FIELD3, FIELD4, FIELD5, FIELD6, FIELD7, FIELD8, FIELD9, FIELD10, FIELD11, FIELD12, FIELD13, FIELD14, FIELD15, FIELD16, FIELD17, FIELD18, FIELD19, FIELD20, FIELD21, FIELD22, FIELD23, FIELD24, FIELD25 "
-                    + "FROM HTABLE WHERE H_KEY=?"     );
+            "SELECT FIELD198, FIELD206, FIELD169, FIELD119, FIELD9, FIELD220, FIELD2, FIELD230, FIELD212, FIELD164, FIELD111, FIELD136, FIELD106, FIELD8, FIELD112, FIELD4, FIELD234, FIELD147, FIELD35, FIELD114, FIELD89, FIELD127, FIELD144, FIELD71, FIELD186 "
+                    + "FROM HTABLE WHERE FIELD1>?" );
     
 	//FIXME: The value in ysqb is a byteiterator
     public void run(Connection conn, int keyname, Map<Integer,Integer> results) throws SQLException {

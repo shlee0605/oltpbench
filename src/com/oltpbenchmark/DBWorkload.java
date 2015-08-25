@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -211,7 +212,6 @@ public class DBWorkload {
             wrkld.setDBName(xmlConfig.getString("DBName"));
             wrkld.setDBUsername(xmlConfig.getString("username"));
             wrkld.setDBPassword(xmlConfig.getString("password"));
-            wrkld.setSelectivity(xmlConfig.getDouble("selectivity"));
             int terminals = xmlConfig.getInt("terminals[not(@bench)]", 0);
             terminals = xmlConfig.getInt("terminals" + pluginTest, terminals);
             wrkld.setTerminals(terminals);
@@ -220,6 +220,15 @@ public class DBWorkload {
             wrkld.setScaleFactor(xmlConfig.getDouble("scalefactor", 1.0));
             wrkld.setRecordAbortMessages(xmlConfig.getBoolean("recordabortmessages", false));
             wrkld.setDataDir(xmlConfig.getString("datadir", "."));
+
+            double selectivity = -1;
+            try {
+                selectivity = xmlConfig.getDouble("selectivity");
+                wrkld.setSelectivity(selectivity);
+            }
+            catch(NoSuchElementException nse) {  
+                // Nothing to do here !
+            }
 
             // ----------------------------------------------------------------
             // CREATE BENCHMARK MODULE
@@ -240,7 +249,10 @@ public class DBWorkload {
             initDebug.put("URL", wrkld.getDBConnection());
             initDebug.put("Isolation", wrkld.getIsolationString());
             initDebug.put("Scale Factor", wrkld.getScaleFactor());
-            initDebug.put("Selectivity", wrkld.getSelectivity());
+            
+            if(selectivity != -1)
+                initDebug.put("Selectivity", selectivity);
+
             LOG.info(SINGLE_LINE + "\n\n" + StringUtil.formatMaps(initDebug));
             LOG.info(SINGLE_LINE);
 

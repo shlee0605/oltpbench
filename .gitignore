@@ -25,3 +25,5 @@ target
 *.raw
 *.res
 *.summary
+
+outputfile*

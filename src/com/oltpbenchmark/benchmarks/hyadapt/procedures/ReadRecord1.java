@@ -39,12 +39,20 @@ public class ReadRecord1 extends Procedure{
     public void run(Connection conn, int keyname, Map<Integer,Integer> results) throws SQLException {
         PreparedStatement stmt = this.getPreparedStatement(conn, readStmt);
         stmt.setInt(1, keyname);          
+
+        LOG.info("query : " + stmt.toString());
+
         ResultSet r=stmt.executeQuery();
+        int res_cnt = 0;
         while(r.next())
         {
+            res_cnt++;
         	for(int i=1; i<= ((HYADAPTConstants.FIELD_COUNT/10) * 1); i++)
         		results.put(i, r.getInt(i));
-        }
+        }        
+        
+        LOG.info("result : " + res_cnt);
+
         r.close();
     }
 

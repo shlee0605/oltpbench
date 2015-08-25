@@ -49,10 +49,12 @@ import com.oltpbenchmark.util.TextGenerator;
 
 public class HYADAPTWorker extends Worker {
 
-    private ZipfianGenerator zipf;
     private static CounterGenerator insertRecord;
+    private double selectivity = wrkld.getSelectivity();
+    private int key_lower_bound = (int) ((1 - selectivity) * HYADAPTConstants.RANGE);
+    private ZipfianGenerator zipf;
     private ZipfianGenerator scan_zipf;
-
+        
     private final Map<Integer, String> m = new HashMap<Integer, String>();
     
     public HYADAPTWorker(int id, BenchmarkModule benchmarkModule, int init_record_count) {
@@ -71,7 +73,7 @@ public class HYADAPTWorker extends Worker {
     @Override
     protected TransactionStatus executeWork(TransactionType nextTrans) throws UserAbortException, SQLException {
         Class<? extends Procedure> procClass = nextTrans.getProcedureClass();
-        
+                
         if (procClass.equals(ReadRecord1.class)) {
             readRecord1();
         } else if (procClass.equals(ReadRecord2.class)) {
@@ -112,77 +114,67 @@ public class HYADAPTWorker extends Worker {
     private void readRecord1() throws SQLException {
         ReadRecord1 proc = this.getProcedure(ReadRecord1.class);
         assert (proc != null);
-        int keyname = zipf.nextInt();
-        proc.run(conn, keyname, new HashMap<Integer, Integer>());
+        proc.run(conn, key_lower_bound, new HashMap<Integer, Integer>());
     }
 
     private void readRecord2() throws SQLException {
         ReadRecord2 proc = this.getProcedure(ReadRecord2.class);
         assert (proc != null);
-        int keyname = zipf.nextInt();
-        proc.run(conn, keyname, new HashMap<Integer, Integer>());
+        proc.run(conn, key_lower_bound, new HashMap<Integer, Integer>());
     }
 
     private void readRecord3() throws SQLException {
         ReadRecord3 proc = this.getProcedure(ReadRecord3.class);
         assert (proc != null);
-        int keyname = zipf.nextInt();
-        proc.run(conn, keyname, new HashMap<Integer, Integer>());
+        proc.run(conn, key_lower_bound, new HashMap<Integer, Integer>());
     }
 
     private void readRecord4() throws SQLException {
         ReadRecord4 proc = this.getProcedure(ReadRecord4.class);
         assert (proc != null);
-        int keyname = zipf.nextInt();
-        proc.run(conn, keyname, new HashMap<Integer, Integer>());
+        proc.run(conn, key_lower_bound, new HashMap<Integer, Integer>());
     }
 
     private void readRecord5() throws SQLException {
         ReadRecord5 proc = this.getProcedure(ReadRecord5.class);
         assert (proc != null);
-        int keyname = zipf.nextInt();
-        proc.run(conn, keyname, new HashMap<Integer, Integer>());
+        proc.run(conn, key_lower_bound, new HashMap<Integer, Integer>());
     }
 
     private void readRecord6() throws SQLException {
         ReadRecord6 proc = this.getProcedure(ReadRecord6.class);
         assert (proc != null);
-        int keyname = zipf.nextInt();
-        proc.run(conn, keyname, new HashMap<Integer, Integer>());
+        proc.run(conn, key_lower_bound, new HashMap<Integer, Integer>());
     }
 
     private void readRecord7() throws SQLException {
         ReadRecord7 proc = this.getProcedure(ReadRecord7.class);
         assert (proc != null);
-        int keyname = zipf.nextInt();
-        proc.run(conn, keyname, new HashMap<Integer, Integer>());
+        proc.run(conn, key_lower_bound, new HashMap<Integer, Integer>());
     }
 
     private void readRecord8() throws SQLException {
         ReadRecord8 proc = this.getProcedure(ReadRecord8.class);
         assert (proc != null);
-        int keyname = zipf.nextInt();
-        proc.run(conn, keyname, new HashMap<Integer, Integer>());
+        proc.run(conn, key_lower_bound, new HashMap<Integer, Integer>());
     }
+
     private void readRecord9() throws SQLException {
         ReadRecord9 proc = this.getProcedure(ReadRecord9.class);
         assert (proc != null);
-        int keyname = zipf.nextInt();
-        proc.run(conn, keyname, new HashMap<Integer, Integer>());
+        proc.run(conn, key_lower_bound, new HashMap<Integer, Integer>());
     }
 
     private void readRecord10() throws SQLException {
         ReadRecord10 proc = this.getProcedure(ReadRecord10.class);
         assert (proc != null);
-        int keyname = zipf.nextInt();
-        proc.run(conn, keyname, new HashMap<Integer, Integer>());
+        proc.run(conn, key_lower_bound, new HashMap<Integer, Integer>());
     }
 
     private void readRecord() throws SQLException {
         ReadRecord proc = this.getProcedure(ReadRecord.class);
         assert (proc != null);
-        int keyname = zipf.nextInt();
-        proc.run(conn, keyname, new HashMap<Integer, Integer>());
+        proc.run(conn, key_lower_bound, new HashMap<Integer, Integer>());
     }
 
     private void updateRecord() throws SQLException {

@@ -52,7 +52,7 @@ public class HYADAPTLoader extends Loader {
     public static int getRandInt() {
         // nextInt is normally exclusive of the top value,
         // so add 1 to make it inclusive
-        int min = -HYADAPTConstants.RANGE;
+        int min = 0;
         int max = HYADAPTConstants.RANGE;        
 
         int randomNum = rand.nextInt((max - min) + 1) + min;

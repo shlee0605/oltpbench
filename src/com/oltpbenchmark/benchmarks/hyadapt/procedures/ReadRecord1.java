@@ -43,7 +43,7 @@ public class ReadRecord1 extends Procedure{
         	for(int i=1; i<= ((HYADAPTConstants.FIELD_COUNT/10) * 1); i++)
         	    results.put(i, r.getInt(i));
         }        
-
+                
         r.close();
     }
 

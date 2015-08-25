@@ -28,7 +28,7 @@ import com.oltpbenchmark.WorkloadConfiguration;
 import com.oltpbenchmark.api.BenchmarkModule;
 import com.oltpbenchmark.api.Loader;
 import com.oltpbenchmark.api.Worker;
-import com.oltpbenchmark.benchmarks.hyadapt.procedures.InsertRecord;
+import com.oltpbenchmark.benchmarks.hyadapt.procedures.ReadRecord1;
 import com.oltpbenchmark.catalog.Table;
 import com.oltpbenchmark.util.SQLUtil;
 
@@ -80,7 +80,7 @@ public class HYADAPTBenchmark extends BenchmarkModule {
     @Override
     protected Package getProcedurePackageImpl() {
         // TODO Auto-generated method stub
-        return InsertRecord.class.getPackage();
+        return ReadRecord1.class.getPackage();
     }
 
 }

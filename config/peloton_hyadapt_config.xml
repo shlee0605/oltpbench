@@ -11,7 +11,7 @@
     <scalefactor>1</scalefactor>
 
     <selectivity>0.1</selectivity>
-    
+
     <!-- The workload -->
     <terminals>1</terminals>
     <works>
@@ -19,9 +19,8 @@
             <time>10</time>
             <rate>unlimited</rate>
             <weights>
-                0,0,0,0,0,
-                0,0,0,0,100,
-                0,0,0,0,0,0</weights>
+                100,0,0,0,0,0,0,0,0,0
+            </weights>
         </work>
     </works>
 
@@ -56,24 +55,6 @@
         </transactiontype>
         <transactiontype>
             <name>ReadRecord10</name>
-        </transactiontype>
-        <transactiontype>
-            <name>ReadRecord</name>
-        </transactiontype>
-        <transactiontype>
-            <name>InsertRecord</name>
-        </transactiontype>
-        <transactiontype>
-            <name>ScanRecord</name>
-        </transactiontype>
-        <transactiontype>
-            <name>UpdateRecord</name>
-        </transactiontype>
-        <transactiontype>
-            <name>DeleteRecord</name>
-        </transactiontype>
-        <transactiontype>
-            <name>ReadModifyWriteRecord</name>
         </transactiontype>
     </transactiontypes>
 

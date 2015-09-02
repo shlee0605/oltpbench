@@ -24,7 +24,7 @@ public abstract class HYADAPTConstants {
 
     public static final int RANGE = 10;
 
-    public static final int configCommitCount = 100;
+    public static final int configCommitCount = 10000;
 
     static final int MAX_SCAN=1000;
 

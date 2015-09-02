@@ -2,26 +2,26 @@
 <parameters>
     <dbtype>postgres</dbtype>
     <driver>org.postgresql.Driver</driver>
-    <DBUrl>jdbc:postgresql://localhost:5432/hyadapt/</DBUrl>
+    <DBUrl>jdbc:postgresql://localhost:57721/hyadapt/</DBUrl>
     <DBName>hyadapt</DBName>
     <username>parallels</username>
     <password>parallels</password>
 
     <!-- Scalefactor in HYADAPT is *1000 the number of rows in the HTABLE-->
-    <scalefactor>1</scalefactor>
+    <scalefactor>100</scalefactor>
 
-    <selectivity>0.1</selectivity>
+    <selectivity>0.0001</selectivity>
 
     <!-- The workload -->
-    <terminals>1</terminals>
+    <terminals>4</terminals>
     <works>
         <work>
-            <time>10</time>
+            <time>30</time>
             <rate>unlimited</rate>
             <weights>
-                100,0,0,0,0,0,0,0,0,0,
-                0,0,0,0,0,0,0,0,0,0,
-                0,0,0,0,0,0,0,0,0,0
+                50,0,0,0,0,0,0,0,0,0,
+                30,0,0,0,0,0,0,0,0,0,
+                20,0,0,0,0,0,0,0,0,0
             </weights>
         </work>
     </works>

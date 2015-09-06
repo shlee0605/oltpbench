@@ -8,20 +8,20 @@
     <password>parallels</password>
 
     <!-- Scalefactor in HYADAPT is *1000 the number of rows in the HTABLE-->
-    <scalefactor>100</scalefactor>
+    <scalefactor>10</scalefactor>
 
-    <selectivity>0.0001</selectivity>
+    <selectivity>0.001</selectivity>
 
     <!-- The workload -->
-    <terminals>4</terminals>
+    <terminals>1</terminals>
     <works>
         <work>
-            <time>30</time>
+            <time>10</time>
             <rate>unlimited</rate>
             <weights>
-                50,0,0,0,0,0,0,0,0,0,
-                30,0,0,0,0,0,0,0,0,0,
-                20,0,0,0,0,0,0,0,0,0
+                0,0,0,0,0,0,0,0,0,100,
+                0,0,0,0,0,0,0,0,0,0,
+                0,0,0,0,0,0,0,0,0,0
             </weights>
         </work>
     </works>

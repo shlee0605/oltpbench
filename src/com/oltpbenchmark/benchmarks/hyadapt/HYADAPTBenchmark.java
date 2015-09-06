@@ -24,6 +24,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.oltpbenchmark.WorkloadConfiguration;
 import com.oltpbenchmark.api.BenchmarkModule;
 import com.oltpbenchmark.api.Loader;
@@ -33,6 +35,7 @@ import com.oltpbenchmark.catalog.Table;
 import com.oltpbenchmark.util.SQLUtil;
 
 public class HYADAPTBenchmark extends BenchmarkModule {
+    private static final Logger LOG = Logger.getLogger(HYADAPTBenchmark.class);
 
     public HYADAPTBenchmark(WorkloadConfiguration workConf) {
         super("hyadapt", workConf, true);
@@ -49,7 +52,7 @@ public class HYADAPTBenchmark extends BenchmarkModule {
 
             Table t = this.catalog.getTable("HTABLE");
             assert (t != null) : "Invalid table name '" + t + "' " + this.catalog.getTables();
-            String userCount = SQLUtil.getMaxColSQL(t, "h_key");
+            String userCount = SQLUtil.getCountSQL(t);
             Statement stmt = metaConn.createStatement();
             ResultSet res = stmt.executeQuery(userCount);
             int init_record_count = 0;
@@ -65,10 +68,13 @@ public class HYADAPTBenchmark extends BenchmarkModule {
                 workers.add(new HYADAPTWorker(i, this, init_record_count + 1));
             } // FOR
             metaConn.close();
+            
+            LOG.info("Init Record Count :: " + init_record_count);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
         return workers;
     }
 

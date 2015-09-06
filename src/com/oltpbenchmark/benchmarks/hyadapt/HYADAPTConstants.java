@@ -22,7 +22,7 @@ public abstract class HYADAPTConstants {
     
     public static final int FIELD_COUNT = 250;
 
-    public static final int RANGE = 10;
+    public static final int RANGE = 1000000;
 
     public static final int configCommitCount = 10000;
 

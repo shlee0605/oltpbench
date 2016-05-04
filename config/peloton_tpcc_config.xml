@@ -2,8 +2,8 @@
 <parameters>
     <dbtype>postgres</dbtype>
     <driver>org.postgresql.Driver</driver>
-    <DBUrl>jdbc:postgresql://localhost:57721/tpcc/</DBUrl>
-    <DBName>tpcc</DBName>
+    <DBUrl>jdbc:postgresql://localhost:57721/postgres/</DBUrl>
+    <DBName>postgres</DBName>
     <username>vagrant</username>
     <password>parallels</password>
 
